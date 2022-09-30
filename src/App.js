@@ -1,13 +1,37 @@
 import React from 'react'
-import { Typography, AppBar } from "@material-ui/core"
+import { Typography, AppBar, createTheme } from "@material-ui/core"
 import VideoPlayer from './component/VideoPlayer'
 import Notification from "./component/Notification"
 import Options from "./component/Options"
-
+import { makeStyles } from '@material-ui/styles'
+import { ThemeProvider } from '@material-ui/styles'
+const theme = createTheme();
+const useStyles = makeStyles((theme) => ({
+    appBar: {
+        borderRadius: 15,
+        margin: '30px 100px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '600px',
+        border: '2px solid black',
+    },
+    image: {
+        marginLeft: '15px',
+    },
+    wrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+    },
+}));
 const App = () => {
+    const classes = useStyles();
     return (
-        <div>
-            <AppBar position='static' color='inherit'>
+        <ThemeProvider theme={theme}> <div className={classes.wrapper}>
+            <AppBar className={classes.appBar} position='static' color='inherit'>
                 <Typography variant='h2' align='center'>Video App</Typography>
             </AppBar>
             <VideoPlayer />
@@ -15,6 +39,8 @@ const App = () => {
                 <Notification />
             </Options>
         </div>
+        </ThemeProvider>
+
     )
 }
 
