@@ -5,7 +5,17 @@ import Notification from "./component/Notification"
 import Options from "./component/Options"
 import { makeStyles } from '@material-ui/styles'
 import { ThemeProvider } from '@material-ui/styles'
-const theme = createTheme();
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+});
 const useStyles = makeStyles((theme) => ({
     appBar: {
         borderRadius: 15,
@@ -16,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         width: '600px',
         border: '2px solid black',
+
+        // [theme.breakpoints.down('xs')]: {
+        //     width: '90%',
+        // },
     },
     image: {
         marginLeft: '15px',
